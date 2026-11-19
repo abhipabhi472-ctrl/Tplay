@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Priya ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg1: #12040e;
+      --bg2: #2d0923;
+      --card: rgba(36, 9, 29, 0.88);
+      --border: rgba(255, 140, 190, 0.3);
+      --pink: #ff4d8d;
+      --soft: #ffa3c7;
+      --gold: #ffd6a5;
+      --text: #fff7fb;
+      --sub: #f4c4d8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 0%, var(--bg2), var(--bg1) 76%);
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      overflow-x: hidden;
+    }
+    .hearts-bg { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+    .floating-heart {
+      position: absolute; bottom: -30px; color: rgba(255, 77, 141, 0.28);
+      animation: rise linear infinite; user-select: none;
+    }
+    @keyframes rise {
+      0% { transform: translateY(0) scale(0.85); opacity: 0; }
+      20% { opacity: 0.8; }
+      100% { transform: translateY(-108vh) scale(1.25) rotate(22deg); opacity: 0; }
+    }
+    .phone-card {
+      position: relative; z-index: 1; width: 100%; max-width: 420px;
+      background: var(--card); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border); border-radius: 30px; padding: 28px 20px;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.68), 0 0 40px rgba(255, 77, 141, 0.16);
+      text-align: center;
+      animation: cardFade 0.4s ease;
+    }
+    @keyframes cardFade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .step-pill {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.1px;
+      text-transform: uppercase; color: var(--soft); background: rgba(255, 77, 141, 0.16);
+      border: 1px solid rgba(255, 158, 196, 0.35); padding: 5px 14px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .progress-track { width: 100%; height: 5px; background: rgba(255, 255, 255, 0.12); border-radius: 999px; overflow: hidden; margin-bottom: 22px; }
+    .progress-bar { height: 100%; width: 33.3%; background: linear-gradient(90deg, var(--pink), var(--soft), var(--gold)); transition: width 0.4s ease; }
+    .script-title {
+      font-family: "Pacifico", cursive; font-size: 26px; font-weight: 400; color: #fff;
+      text-shadow: 0 0 20px rgba(255, 77, 141, 0.5); margin-bottom: 10px; line-height: 1.32;
+    }
+    .sub-prompt { font-size: 15px; color: var(--sub); line-height: 1.55; margin-bottom: 22px; }
+    .arena { position: relative; min-height: 136px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .btn-yes {
+      padding: 14px 26px; border: none; border-radius: 18px;
+      background: linear-gradient(135deg, var(--pink), #d81b60); color: #fff;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 10px 26px rgba(255, 77, 141, 0.42); z-index: 2;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-yes:active { transform: scale(0.97); }
+    .btn-dodge {
+      padding: 12px 22px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.1); color: #ffe3ee; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 3;
+    }
+    .puppy-popup {
+      margin-top: 14px; padding: 12px; border-radius: 16px;
+      background: rgba(255, 158, 196, 0.13); border: 1px dashed rgba(255, 158, 196, 0.45); display: none;
+    }
+    .puppy-face { font-size: 36px; display: inline-block; animation: bob 0.65s infinite alternate; }
+    @keyframes bob { from { transform: translateY(0) rotate(-5deg); } to { transform: translateY(-3px) rotate(5deg); } }
+    .puppy-msg { font-size: 13px; color: var(--sub); margin-top: 4px; line-height: 1.4; }
+    .photo-box {
+      width: 100%; max-height: 350px; border-radius: 22px; overflow: hidden;
+      border: 2px solid rgba(255, 163, 199, 0.5); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+      margin: 16px 0; background: rgba(0, 0, 0, 0.25);
+    }
+    .photo-box img { width: 100%; max-height: 350px; object-fit: cover; display: block; }
+    .final-quote {
+      font-size: 15px; line-height: 1.7; color: var(--text); font-style: italic;
+      margin-top: 10px; padding: 0 4px;
+    }
+    .confetti-piece { position: fixed; top: -12px; width: 9px; height: 9px; z-index: 6; pointer-events: none; animation: fall linear forwards; }
+    @keyframes fall { to { transform: translateY(106vh) rotate(700deg); opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <!-- Starting Flute BGM -->
+  <audio id="startBgm" src="https://raw.githubusercontent.com/abhipabhi472-ctrl/Tplay/main/Endhayya%20Saami%20-%20Ranabaali%20_%20Flute.mp3" loop preload="auto"></audio>
+
+  <!-- Final Reveal Song -->
+  <audio id="revealSong" src="https://raw.githubusercontent.com/abhipabhi472-ctrl/Tplay/main/animal-ney-veyrey-songcouplestelugu-efx-whatsapp-statuslove-song-statussrkedits297207511.mp3" loop preload="auto"></audio>
+
+  <div class="phone-card" id="appCard">
+    <div class="step-pill">Question 1 of 3 • For Priya</div>
+    <div class="progress-track"><div class="progress-bar" style="width:33.3%"></div></div>
+    <h1 class="script-title">Hey Priya</h1>
+    <p class="sub-prompt">Priya, ee chinna proposal neeke... accept chestava mari?</p>
+    <div class="arena">
+      <button class="btn-yes" onclick="goStep(1)">Of course, accept ❤️</button>
+      <button class="btn-dodge" onclick="dodge(this)">No, bhayam vestundi 😜</button>
+    </div>
+    <div class="puppy-popup" id="puppyPopup">
+      <div class="puppy-face">🐶😢💧</div>
+      <div class="puppy-msg">Puppy edustundi chudu Priya! "Of course, accept ❤️" nokku please.</div>
+    </div>
+  </div>
+
+  <script>
+    const PRIYA_PHOTO_URL = "https://i.postimg.cc/JhzGFHgf/IMG-20261119-210055.jpg";
+    let step = 0;
+    let bgmStarted = false;
+
+    const startBgm = document.getElementById("startBgm");
+    const revealSong = document.getElementById("revealSong");
+
+    function playStartBgm() {
+      if (bgmStarted || step >= 3) return;
+      startBgm.volume = 0.28;
+      startBgm.play().then(() => {
+        bgmStarted = true;
+      }).catch(() => {});
+    }
+
+    function dodge(btn) {
+      playStartBgm();
+      const dx = Math.floor(Math.random() * 130) - 65;
+      const dy = Math.floor(Math.random() * 64) - 32;
+      btn.style.transform = `translate(${dx}px, ${dy}px)`;
+      const pop = document.getElementById("puppyPopup");
+      if (pop) pop.style.display = "block";
+    }
+
+    function goStep(n) {
+      playStartBgm();
+      step = n;
+      renderStep();
+    }
+
+    function finishReveal() {
+      step = 3;
+      renderStep();
+
+      const colors = ["#ff4d8d", "#ffa3c7", "#ffd6a5", "#ffffff", "#e0aaff"];
+      for (let i = 0; i < 45; i++) {
+        const dot = document.createElement("div");
+        dot.className = "confetti-piece";
+        dot.style.left = Math.random() * 100 + "vw";
+        dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+        dot.style.animationDuration = (2.4 + Math.random() * 2.4) + "s";
+        document.body.appendChild(dot);
+        setTimeout(() => dot.remove(), 5000);
+      }
+
+      startBgm.pause();
+      startBgm.currentTime = 0;
+      revealSong.currentTime = 0;
+      revealSong.volume = 1.0;
+      revealSong.play().catch(() => {});
+    }
+
+    function renderStep() {
+      const card = document.getElementById("appCard");
+
+      if (step === 1) {
+        card.innerHTML = `
+          <div class="step-pill">Question 2 of 3 • Sweet Date</div>
+          <div class="progress-track"><div class="progress-bar" style="width:66.6%"></div></div>
+          <h1 class="script-title">Date Plan</h1>
+          <p class="sub-prompt">Manam kalisi oka sweet date ki eppudu veldam anukuntunnav?</p>
+          <div class="arena">
+            <button class="btn-yes" onclick="goStep(2)">Repu / Twaralone 💕</button>
+            <button class="btn-dodge" onclick="dodge(this)">Inka time undi le 😜</button>
+          </div>
+          <div class="puppy-popup" id="puppyPopup">
+            <div class="puppy-face">🐶😢💧</div>
+            <div class="puppy-msg">Puppy ki kuda twaraga vellalani undi Priya! "Repu / Twaralone 💕" nokku.</div>
+          </div>
+        `;
+      } else if (step === 2) {
+        card.innerHTML = `
+          <div class="step-pill">Question 3 of 3 • Special Date</div>
+          <div class="progress-track"><div class="progress-bar" style="width:100%"></div></div>
+          <h1 class="script-title">First Date</h1>
+          <p class="sub-prompt">Mana first date eppudu, aa special date ento cheppu mari?</p>
+          <div class="arena">
+            <button class="btn-yes" onclick="finishReveal()">Christmas (Dec 25) 💕</button>
+            <button class="btn-dodge" onclick="dodge(this)">Tarvata chepta le 🙈</button>
+          </div>
+          <div class="puppy-popup" id="puppyPopup">
+            <div class="puppy-face">🐶😢💧</div>
+            <div class="puppy-msg">Special date kosam puppy waiting Priya! "Christmas (Dec 25) 💕" click cheyyi.</div>
+          </div>
+        `;
+      } else if (step === 3) {
+        card.innerHTML = `
+          <div class="step-pill">Christmas Date • Dec 25 💕</div>
+          <h1 class="script-title">For You, Priya</h1>
+          <div class="photo-box"><img src="${PRIYA_PHOTO_URL}" alt="Priya" /></div>
+          <p class="final-quote">
+            “We have never hugged or kissed, and yet watching from afar, chatting, and talking to you is my favorite part of every day.”
+          </p>
+        `;
+      }
+    }
+
+    ["pointerdown", "touchstart", "click"].forEach(evt => {
+      document.addEventListener(evt, playStartBgm, { once: true });
+    });
+
+    const heartsBg = document.getElementById("heartsBg");
+    for (let i = 0; i < 15; i++) {
+      const h = document.createElement("div");
+      h.className = "floating-heart"; h.textContent = "❤";
+      h.style.left = Math.random() * 100 + "%"; h.style.fontSize = (14 + Math.random() * 16) + "px";
+      h.style.animationDuration = (6 + Math.random() * 6) + "s";
+      heartsBg.appendChild(h);
+    }
+  </script>
+</body>
+  </html>
+  
