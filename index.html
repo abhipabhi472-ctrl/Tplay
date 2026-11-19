@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Priya ❤️</title>
+  <style>
+    :root {
+      --bg-1: #160712;
+      --bg-2: #2d0c24;
+      --card: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.16);
+      --accent: #ff4d8d;
+      --accent-2: #ff9ebb;
+      --text: #fff7fa;
+      --muted: #f3c6d8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, var(--bg-2), var(--bg-1) 75%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-heart {
+      position: absolute;
+      bottom: -40px;
+      color: rgba(255, 77, 141, 0.25);
+      animation: floatUp linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.7;
+      }
+      85% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.2) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    .box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 430px;
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      text-align: center;
+    }
+
+    .step-badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      background: rgba(255, 77, 141, 0.16);
+      border: 1px solid rgba(255, 77, 141, 0.35);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 33.3%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.35s ease;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .question {
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 20px;
+      min-height: 52px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(0, 0, 0, 0.28);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      margin-bottom: 14px;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 77, 141, 0.22);
+    }
+
+    button.btn-primary {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #e02e70);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(255, 77, 141, 0.35);
+    }
+
+    button.btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .hint-box {
+      margin-top: 16px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: rgba(255, 158, 187, 0.12);
+      border: 1px dashed rgba(255, 158, 187, 0.45);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      display: none;
+    }
+
+    .bgm-status {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.85;
+      cursor: pointer;
+    }
+
+    .shake {
+      animation: shakeAnim 0.35s ease;
+    }
+
+    @keyframes shakeAnim {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-7px); }
+      75% { transform: translateX(7px); }
+    }
+
+    /* Reveal Screen */
+    #reveal-screen {
+      display: none;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .photo-frame {
+      width: 100%;
+      max-height: 360px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 158, 187, 0.45);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
+      margin: 16px 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .love-note {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-top: 10px;
+    }
+
+    .music-pill {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -12px;
+      width: 10px;
+      height: 10px;
+      z-index: 5;
+      pointer-events: none;
+      animation: confettiFall linear forwards;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(105vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <!-- Reveal Song -->
+  <audio id="revealSong" src="animal-ney-veyrey-songcouplestelugu-efx-whatsapp-statuslove-song-statussrkedits297207511.mp3" loop preload="auto"></audio>
+
+  <div class="box" id="cardBox">
+    <div id="quiz-screen">
+      <div class="step-badge" id="stepBadge">Priya Lock • Question 1 of 3</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <h1>Hey Priya ❤️</h1>
+      <p class="question" id="questionText"></p>
+
+      <input
+        type="text"
+        id="answerInput"
+        placeholder="Answer ikkada type cheyyi..."
+        autocomplete="off"
+      />
+      <button class="btn-primary" id="submitBtn">Unlock Next 💖</button>
+
+      <div class="hint-box" id="hintBox"></div>
+      <div class="bgm-status" id="bgmStatus">🎵 Soft love BGM ready • Tap anywhere to start</div>
+    </div>
+
+    <div id="reveal-screen">
+      <div class="step-badge">Unlocked For Priya ✨</div>
+      <h1>Nuvvu Naa World, Priya ❤️</h1>
+      <div class="photo-frame">
+        <img id="surprisePhoto" src="photo.jpg" alt="Priya Surprise Photo" />
+      </div>
+      <p class="love-note" id="loveNote">
+        Priya, naa life lo vachina prathi happy moment ki nuvve karanam. Mana first hug, mana navvulu, mana future—annitiki eppudu neethone untanu. I love you so much! 💕
+      </p>
+      <button class="music-pill" id="musicToggle">🔊 Song Playing • Tap to Pause</button>
+    </div>
+  </div>
+
+  <script>
+    const PHOTO_URL = "photo.jpg"; // Repo lo photo.jpg pedithe ide work avutundi, leda direct image URL pettuko
+
+    const questions = [
+      {
+        q: "Manam first time ekkuva sepu matladina roju / moment gurthunda?",
+        answers: ["night", "call", "chat", "sunday", "evening", "midnight"],
+        hints: [
+          "Aa roju time ela gadichindo kuda teliyaledu kadha Priya! 😊",
+          "Word 'N' tho start avutundi, 5 letters untayi (ekkuva sepu matladina time/way gurtu chesko).",
+          "Starts with 'Ni...' — night lo matladina aa special moment gurtu chesko!"
+        ]
+      },
+      {
+        q: "Mana future lo nenu neetho eppudu undalanukune aa okka feeling / word enti?",
+        answers: ["forever", "always", "together"],
+        hints: [
+          "Eppatiki vidipodam anukoni padam idi... naaku nee nunchi okka hug kuda kavali Priya 🤗💕",
+          "Word 'F' tho start avutundi, 7 letters untayi — hug ivvadam marchipoku!",
+          "Starts with 'Fo...' — naa hug kosam lock open chesey!"
+        ]
+      },
+      {
+        q: "Manam date ki eppudu veldam? Mana first hug date eppudu?",
+        acceptAnyNonEmpty: true,
+        hints: [
+          "Priya, nenu eppudaina ready — 'today', 'tomorrow', leda edoka date cheppu! 😉",
+          "Mana date / first hug roju kosam 'today', 'tomorrow', 'soon' leda edoka date enter chey.",
+          "Simple ga 'today' / 'tomorrow' ani type chesina leda date rasina unlock avutundi!"
+        ]
+      }
+    ];
+
+    let currentIndex = 0;
+    let wrongAttempts = 0;
+
+    // Soft Web Audio Love BGM Engine
+    let audioCtx = null;
+    let bgmGain = null;
+    let bgmTimer = null;
+    let bgmPlaying = false;
+
+    const chordProgression = [
+      [261.63, 329.63, 392.00, 493.88], // Cmaj7
+      [220.00, 261.63, 329.63, 392.00], // Am7
+      [174.61, 220.00, 261.63, 349.23], // Fmaj7
+      [196.00, 246.94, 293.66, 392.00]  // G6
+    ];
+    let chordStep = 0;
+
+    function playSoftChord(freqs) {
+      if (!audioCtx || !bgmGain || !bgmPlaying) return;
+      const now = audioCtx.currentTime;
+      freqs.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const noteGain = audioCtx.createGain();
+        osc.type = idx % 2 === 0 ? "sine" : "triangle";
+        osc.frequency.setValueAtTime(freq, now);
+
+        noteGain.gain.setValueAtTime(0.0001, now);
+        noteGain.gain.exponentialRampToValueAtTime(0.032, now + 0.6);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 2.7);
+
+        osc.connect(noteGain);
+        noteGain.connect(bgmGain);
+
+        osc.start(now);
+        osc.stop(now + 2.8);
+      });
+    }
+
+    function startLowLoveBgm() {
+      if (bgmPlaying) return;
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+
+      if (!audioCtx) {
+        audioCtx = new AudioContextClass();
+        bgmGain = audioCtx.createGain();
+        bgmGain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+        bgmGain.connect(audioCtx.destination);
+      }
+
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+
+      bgmPlaying = true;
+      bgmStatus.textContent = "🎵 Low love BGM playing softly... (Tap to mute/unmute)";
+
+      playSoftChord(chordProgression[chordStep]);
+      chordStep = (chordStep + 1) % chordProgression.length;
+
+      bgmTimer = setInterval(() => {
+        playSoftChord(chordProgression[chordStep]);
+        chordStep = (chordStep + 1) % chordProgression.length;
+      }, 2600);
+    }
+
+    function stopLowLoveBgm() {
+      bgmPlaying = false;
+      if (bgmTimer) {
+        clearInterval(bgmTimer);
+        bgmTimer = null;
+      }
+      if (audioCtx && bgmGain) {
+        bgmGain.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.15);
+      }
+    }
+
+    const stepBadge = document.getElementById("stepBadge");
+    const progressFill = document.getElementById("progressFill");
+    const questionText = document.getElementById("questionText");
+    const answerInput = document.getElementById("answerInput");
+    const submitBtn = document.getElementById("submitBtn");
+    const hintBox = document.getElementById("hintBox");
+    const bgmStatus = document.getElementById("bgmStatus");
+    const quizScreen = document.getElementById("quiz-screen");
+    const revealScreen = document.getElementById("reveal-screen");
+    const cardBox = document.getElementById("cardBox");
+    const surprisePhoto = document.getElementById("surprisePhoto");
+    const revealSong = document.getElementById("revealSong");
+    const musicToggle = document.getElementById("musicToggle");
+
+    surprisePhoto.src = PHOTO_URL;
+
+    function renderQuestion() {
+      const item = questions[currentIndex];
+      wrongAttempts = 0;
+      stepBadge.textContent = `Priya Lock • Question ${currentIndex + 1} of ${questions.length}`;
+      progressFill.style.width = `${((currentIndex + 1) / questions.length) * 100}%`;
+      questionText.textContent = item.q;
+      answerInput.value = "";
+      hintBox.style.display = "none";
+      hintBox.textContent = "";
+      answerInput.focus();
+    }
+
+    function playRevealSong() {
+      stopLowLoveBgm();
+      revealSong.play().then(() => {
+        musicToggle.textContent = "🔊 Song Playing • Tap to Pause";
+      }).catch(() => {
+        musicToggle.textContent = "🔇 Tap to Play Song";
+      });
+    }
+
+    function launchConfetti() {
+      const colors = ["#ff4d8d", "#ff9ebb", "#ffd166", "#ffffff", "#c77dff"];
+      for (let i = 0; i < 45; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDuration = (2.5 + Math.random() * 2.5) + "s";
+        piece.style.animationDelay = (Math.random() * 0.6) + "s";
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 5500);
+      }
+    }
+
+    answerInput.addEventListener("focus", startLowLoveBgm, { once: true });
+    document.body.addEventListener("pointerdown", () => {
+      if (quizScreen.style.display !== "none" && !bgmPlaying) {
+        startLowLoveBgm();
+      }
+    }, { once: true });
+
+    bgmStatus.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (bgmPlaying) {
+        stopLowLoveBgm();
+        bgmStatus.textContent = "🔇 Love BGM muted • Tap to play softly";
+      } else {
+        startLowLoveBgm();
+      }
+    });
+
+    function checkAnswer() {
+      startLowLoveBgm();
+
+      const userVal = answerInput.value.trim().toLowerCase();
+      if (!userVal) {
+        hintBox.style.display = "block";
+        hintBox.textContent = "Priya, answer box empty ga undi—edokati type cheyyi 😊";
+        return;
+      }
+
+      const item = questions[currentIndex];
+      const isCorrect = item.acceptAnyNonEmpty
+        ? userVal.length > 0
+        : item.answers.some(ans => ans.toLowerCase() === userVal);
+
+      if (isCorrect) {
+        currentIndex++;
+        if (currentIndex < questions.length) {
+          renderQuestion();
+        } else {
+          quizScreen.style.display = "none";
+          revealScreen.style.display = "block";
+          launchConfetti();
+          playRevealSong();
+        }
+      } else {
+        wrongAttempts++;
+        cardBox.classList.remove("shake");
+        void cardBox.offsetWidth;
+        cardBox.classList.add("shake");
+
+        const hintIndex = Math.min(wrongAttempts - 1, item.hints.length - 1);
+        hintBox.style.display = "block";
+        hintBox.textContent = `💡 Hint ${hintIndex + 1}: ${item.hints[hintIndex]}`;
+      }
+    }
+
+    submitBtn.addEventListener("click", checkAnswer);
+    answerInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkAnswer();
+    });
+
+    musicToggle.addEventListener("click", () => {
+      if (revealSong.paused) {
+        revealSong.play();
+        musicToggle.textContent = "🔊 Song Playing • Tap to Pause";
+      } else {
+        revealSong.pause();
+        musicToggle.textContent = "🔇 Song Paused • Tap to Play";
+      }
+    });
+
+    const heartsBg = document.getElementById("heartsBg");
+    for (let i = 0; i < 16; i++) {
+      const h = document.createElement("div");
+      h.className = "floating-heart";
+      h.textContent = "❤";
+      h.style.left = Math.random() * 100 + "%";
+      h.style.fontSize = (14 + Math.random() * 18) + "px";
+      h.style.animationDuration = (6 + Math.random() * 6) + "s";
+      h.style.animationDelay = (Math.random() * 5) + "s";
+      heartsBg.appendChild(h);
+    }
+
+    renderQuestion();
+  </script>
+</body>
+        </html>
+        
